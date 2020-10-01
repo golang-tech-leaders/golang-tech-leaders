@@ -1,7 +1,15 @@
-# golang-tech-leaders
+# Golang Tech Leaders
 
 Этот проект посвящен изучению разработки на Golang, CI/CD, мониторингу и хорошим практимам cloud-native приложений.
 
 ## План работ
 
-- [ ] изучение [Go Tour](https://tour.golang.org/)
+- **Часть 1. Разработка**
+  - неделя 1
+    - [ ] изучение [Go Tour](https://tour.golang.org/)
+    - [ ] изучение [Go by Example](https://gobyexample.com/) (по )
+    - [ ] настройка окружения для разработки
+  - неделя 2
+    - TBA
+- **Часть 2. CI/CD**
+- **Часть 3. Мониторинг**
