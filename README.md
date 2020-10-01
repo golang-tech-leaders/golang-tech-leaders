@@ -7,7 +7,7 @@
 - **Часть 1. Разработка**
   - неделя 1
     - [ ] изучение [Go Tour](https://tour.golang.org/)
-    - [ ] изучение [Go by Example](https://gobyexample.com/) (по )
+    - [ ] изучение [Go by Example](https://gobyexample.com/) (по желанию)
     - [ ] настройка окружения для разработки
   - неделя 2
     - TBA
