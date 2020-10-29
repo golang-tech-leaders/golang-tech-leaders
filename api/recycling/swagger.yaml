@@ -1,0 +1,130 @@
+swagger: "2.0"
+info:
+  title: Recycling
+  version: "0.0.1"
+basePath: /api
+schemes:
+  - http
+
+paths:
+  /waste/type/list:
+    get:
+      summary: Получение списка видов отходов
+      description: Список отходов с описанием
+      produces:
+        - application/json
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: "#/definitions/WasteTypeList"
+        400:
+          description: bad request
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 400, "message": {"text": "bad request"}}
+        500:
+          description: internal server error
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 500, "message": {"text": "internal server error"}}
+  
+  /waste/type/search:
+    get:
+      summary: Поиск вида отходов по текстовому описанию
+      description: Из свободного текста определяется вид отхода, если возможно
+      produces:
+        - application/json
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: "#/definitions/WasteType"
+        400:
+          description: bad request
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 400, "message": {"text": "bad request"}}
+        404:
+          description: not found
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 404, "message": {"text": "not found"}}
+        500:
+          description: internal server error
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 500, "message": {"text": "internal server error"}}
+
+  /waste/type/{type_id}:
+    get:
+      summary: Получение вида отхода по id
+      description: Из свободного текста определяется вид отхода, если возможно
+      parameters:
+      - name: type_id
+        description: id вида отходов 
+        in: path
+        type: string
+        required: true
+      produces:
+        - application/json
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: "#/definitions/WasteType"
+        400:
+          description: bad request
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 400, "message": {"text": "bad request"}}
+        404:
+          description: not found
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 404, "message": {"text": "not found"}}
+        500:
+          description: internal server error
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 500, "message": {"text": "internal server error"}}
+      
+definitions:
+  Error:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      details:
+        type: string
+
+  WasteType:
+    type: object
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+
+  WasteTypeList:
+    type: array
+    items:
+      $ref: "#/definitions/WasteType"
