@@ -31,10 +31,16 @@ paths:
           examples:
             application/json: { "code": 500, "message": {"text": "internal server error"}}
   
-  /waste/type/search:
+  /waste/type/search/{text}:
     get:
       summary: Поиск вида отходов по текстовому описанию
       description: Из свободного текста определяется вид отхода, если возможно
+      parameters:
+      - name: text
+        description: свободный текст с описанием вида отходов
+        in: path
+        type: string
+        required: true
       produces:
         - application/json
       responses:
