@@ -1,0 +1,38 @@
+"telegram bot ui":
+  methods:
+    - name: list
+      input:
+        input_type: 
+          - keyboard
+        response:
+          type: 
+            - keyboard
+          content: waste type list
+        pipeline:
+          - recycling (get waste list)
+          - prepare keyboard
+          - response
+        
+    - name: search
+      input_type: 
+        - keyboard
+        - text
+      response:
+        type: 
+          - keyboard
+        content: waste type list
+      pipeline:
+          - recycling (search waste -> text input) 
+          - prepare keyboard
+          - response
+
+    - name: map
+      input_type: 
+        - keyboard
+        - location
+      response:
+        - text (url)
+      pipeline:
+        - request location
+        - geobase (get map -> waste type, location)
+        - respose
