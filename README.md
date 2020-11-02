@@ -22,14 +22,14 @@
 - **Часть 2. CI/CD**
   - неделя 5 ([пример кода](/examples/week5))
     - [x] миграции
-    - [] контейнеризация
-    - [] Docker
-    - [] Docker-Compose
+    - [ ] контейнеризация
+    - [ ] Docker
+    - [ ] Docker-Compose
   - неделя 6
-    - [] CI/CD, пайплайны
-    - [] Github Actions
-    - [] Cloud Computing
-    - [] Kubernetes
+    - [ ] CI/CD, пайплайны
+    - [ ] Github Actions
+    - [ ] Cloud Computing
+    - [ ] Kubernetes
   - неделя 7
     - TBA
   - неделя 8
