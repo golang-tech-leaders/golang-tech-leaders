@@ -1,4 +1,4 @@
-name: Basic pipeline
+name: Basic pipeline Prod environment
 
 on:
   push:
