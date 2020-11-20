@@ -12,6 +12,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", timeHandler(now))
+	http.Handle("/test", myMiddleware(http.Handler(timeHandler(now))))
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -25,6 +26,15 @@ func timeHandler(t currentTime) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, t().Format(time.RFC1123))
 	}
+}
+
+func myMiddleware(h http.Handler) h http.Handler {
+	return func(w http.ResponseWriter, r *http.Request) {
+		log.Print("before")
+		h.Server(w, r)
+		log.Print("after")
+	}
+
 }
 
 type database interface {
