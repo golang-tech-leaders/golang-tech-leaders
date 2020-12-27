@@ -114,6 +114,60 @@ paths:
             $ref: "#/definitions/Error"
           examples:
             application/json: { "code": 500, "message": {"text": "internal server error"}}
+
+  /waste/type/{type_id}/points:
+    get:
+      summary: Получение координат точки приема
+      description: Определение координат ближайшей точки приема отходов по местоположению
+      parameters:
+      - name: type_id
+        description: id вида отходов 
+        in: path
+        type: string
+        required: true
+      - name: latitude
+        description: широта
+        in: query
+        type: number
+        format: float
+        required: true
+      - name: longitude
+        description: долгота 
+        in: query
+        type: number
+        format: float
+        required: true
+      - name: radius
+        description: радиус в метрах
+        in: query
+        type: number
+        format: float
+        required: false
+      produces:
+        - application/json
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: "#/definitions/LocationList"
+        400:
+          description: bad request
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 400, "message": {"text": "bad request"}}
+        404:
+          description: not found
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 404, "message": {"text": "not found"}}
+        500:
+          description: internal server error
+          schema:
+            $ref: "#/definitions/Error"
+          examples:
+            application/json: { "code": 500, "message": {"text": "internal server error"}}
       
 definitions:
   Error:
@@ -149,3 +203,8 @@ definitions:
       longitude:
         type: number
         format: float
+
+  LocationList:
+    type: array
+    items:
+      $ref: "#/definitions/Location"
